@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Soft Skills Treasure Hunt</title>
+  </head>
+  <body>
+    <h1>Soft Skills Treasure Hunt</h1>
+    <div id="clue"></div>
+    <button id="answer">Submit Answer</button>
+    <script>
+      // Define an object to store the clues
+      const clues = {
+        1: {
+          message: "Welcome to the jungle! To find the treasure, you must first learn how to navigate through the wilderness. Here's a game to test your navigation skills.",
+          link: "https://example.com/game"
+        },
+        2: {
+          message: "Great job! You have successfully navigated through the jungle. However, to find the treasure, you must learn how to communicate with the locals. Watch this video to learn some basic phrases in the local language.",
+          link: "https://example.com/video"
+        },
+        3: {
+          message: "Well done! You have learned how to communicate with the locals. Now, you must learn how to survive in the jungle. Solve this riddle to find out what you need to survive: 'I am always hungry, I must always be fed. The finger I touch, will soon turn red. What am I?'",
+          answer: "fire",
+          link: "https://example.com/fire"
+        },
+        4: {
+          message: "Impressive! You have learned how to survive in the jungle. Now, you must use your problem-solving skills to find the next clue. Here's a riddle for you: 'I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I?'",
+          answer: "map",
+          link: "https://example.com/map"
+        },
+        5: {
+          message: "You're almost there! The final clue is hidden in the heart of the jungle. To find it, you must use your observation skills. Watch this video and find the hidden message.",
+          link: "https://example.com/final"
+        },
+        end: "Congratulations! You have found the lost treasure. We hope you had fun and learned some valuable soft skills along the way."
+      };
+
+      // Define a variable to keep track of the current clue
+      let currentClue = 1;
+
+      // Define a function to display the current clue
+      function displayClue() {
+        const clue = clues[currentClue];
+        const clueDiv = document.getElementById("clue");
+        clueDiv.innerHTML = `
+          <p>${clue.message}</p>
+          <p>Link: <a href="${clue.link}" target="_blank">${clue.link}</a></p>
+        `;
+      }
+
+      // Call the displayClue function to display the first clue
+      displayClue();
+
+      // Define a function to handle user input
+      function handleInput() {
+        const clue = clues[currentClue];
+        const answerButton = document.getElementById("answer");
+        const answerInput = prompt(clue.message);
+        
+        if (clue.hasOwnProperty("answer")) {
+          if (answerInput.toLowerCase() === clue.answer.toLowerCase()) {
+            alert("Correct!");
+            currentClue++;
+            displayClue();
+          } else {
+            alert("Oops! That's not the correct answer. Please try again.");
+          }
+        } else {
+          alert("You clicked the link. Please follow the instructions on the page and come back when you're done.");
+        }
+
+        if (currentClue === "end") {
+          const clueDiv = document.getElementById

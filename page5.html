@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Guess the Number Game</title>
+      <style>
+       body {
+  background-image: url(witch_house.webp);
+  background-size:cover;
+  background-position: center;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.5;
+  margin: 50px auto 30px;
+  max-width: 700px;
+  text-align: center;
+  color:#fff;
+}
+
+i {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 50px;
+  color: #fff;
+}
+
+#guess {
+  display: block;
+  margin: 20px auto;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  font-size: 18px;
+  text-align: center;
+  background-color: #fff;
+  color: #333;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  background-color: #ff4b2b;
+  color: #fff;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ff416c;
+}
+
+#message {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 50px;
+  color: #333;
+}
+      </style>
+  </head>
+  <body>
+    <h3>As you correctly solve the riddle, a mysterious voice whispers in your ear, revealing the path to the treasure box. It instructs you to follow the straight path in the forest and seek out the witches' house. Upon arrival, the witch will challenge you to a game. If you emerge victorious, the treasure will be yours to claim.
+
+You begin to follow the path and soon arrive at the witches' house. The witch greets you with a sly smile and presents you with a daunting task. You must guess a number between 1 to 100, but you only have 8 attempts to do so. If you succeed, the treasure will be yours. If you fail, you will be turned into a crow and forced to serve the witch for the rest of your days. The stakes are high, but you steel yourself and prepare to take on the challenge.</h3>
+      <br>
+    <i>Guess a number between 1 and 100. You have 8 attempts.</i>
+    <input type="number" id="guess">
+    <button onclick="checkGuess()">Guess</button>
+    <p id="message"></p>
+    <script>
+      var secretNumber = Math.floor(Math.random() * 100) + 1;
+      var attempts = 8;
+
+      function checkGuess() {
+        var guess = parseInt(document.getElementById("guess").value);
+        if (isNaN(guess)) {
+          document.getElementById("message").innerHTML = "Please enter a valid number.";
+          return;
+        }
+        attempts--;
+        if (guess === secretNumber) {
+          document.getElementById("message").innerHTML = "Congratulations! You guessed the secret number.";
+          document.getElementById("message").style.color = "green";
+                       setInterval(function(){ 
+   window.open("page6.html",'_self');;
+}, 2000); 
+            
+        } else if (guess > secretNumber) {
+          document.getElementById("message").innerHTML = "Too high! You have " + attempts + " attempts left.";
+          document.getElementById("message").style.color = "red";
+        } else {
+          document.getElementById("message").innerHTML = "Too low! You have " + attempts + " attempts left.";
+          document.getElementById("message").style.color = "red";
+        }
+        if (attempts === 0) {
+          document.getElementById("message").innerHTML = "Game over! The secret number was " + secretNumber + ".";
+          document.getElementById("message").style.color = "red";
+          document.getElementById("guess").disabled = true;
+          document.getElementById("guess").value = "";
+          document.getElementsByTagName("button")[0].disabled = true;
+            setInterval(function(){ 
+   window.open("deadend5.html",'_self');;
+}, 2000); 
+        
+        }
+      }
+    </script>
+  </body>
+</html>

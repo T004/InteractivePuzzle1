@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Treasure Box</title>
+	<style>
+		body {
+			background-image: url("background.jpg");
+			background-size: cover;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 50px;
+			color: #fff;
+			text-align: center;
+			background-color: rgba(0, 0, 0, 0.5);
+			box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+		}
+
+		.button {
+			display: inline-block;
+			padding: 10px 20px;
+			background-color: #ffcc00;
+			color: #000;
+			font-weight: bold;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		.button:hover {
+			background-color: #ffc107;
+		}
+
+		.treasure-box {
+			display: none;
+		}
+
+		.treasure-box.active {
+			display: block;
+			margin: 50px auto 0;
+			max-width: 600px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>The Witch's Treasure Box</h1>
+		<p>The witch presents you with the treasure box, her face twisted in a mixture of defeat and anger. You take out the key you had obtained from solving the riddle and insert it into the lock. With a satisfying click, the chest unlocks, and you slowly lift the lid, revealing a dazzling array of jewels, gold coins, and precious artifacts.</p>
+		<p>As you reach into the chest, you can't help but feel a sense of overwhelming pride and joy. You had overcome every obstacle and danger thrown your way, and now the treasure was finally yours.</p>
+		<p>But just as you begin to revel in your newfound wealth, a voice suddenly interrupts your thoughts. It is the same mysterious voice that had guided you to the witch's house. "Congratulations, brave one," it says. "You have defeated the witch and claimed your rightful treasure. But your journey is far from over."</p>
+		<p>Confused, you turn around to see that the witch has vanished, leaving behind only a trail of smoke. The voice continues, "You must now embark on a new quest, one that will test your courage, wit, and strength. Will you accept the challenge?"</p>
+		<p>Without hesitation, you respond with a resounding "yes." You had come too far to turn back now, and the promise of adventure and new treasures was too enticing to resist.</p>
+		<p>With that, the voice fades away, leaving you to ponder what challenges lay ahead. But for now, you hold the treasure chest close to your chest, feeling grateful for the trials that had led you to this moment, and eager to set off on your next adventure.</p>
+		<button class="button" onclick="showTreasureBox()">Open Treasure Box</button>
+		<img src="treasurebox.jpg" alt="Treasure Box" class="treasure-box" id="treasureBox">
+	</div>
+
+	<script>
+		function showTreasureBox() {
+			document.getElementById("treasureBox").classList.add("active");
+		}
+	</script>
+</body>
+</html>

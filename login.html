@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login/Sign-up Page</title>
+	<style>
+        .container {
+	max-width: 1000px;
+	margin: auto;
+	padding: 20px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.form-container {
+	flex-basis: 50%;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+input[type=text], input[type=password] {
+	padding: 10px;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	border: none;
+}
+
+button[type=submit] {
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+
+.error {
+	color: red;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+    
+    </style>
+</head>
+<body>
+	<div class="container">
+		<div class="form-container">
+			<h2>Login</h2>
+			<form method="post" action="login.php">
+				<label>Email</label>
+				<input type="text" placeholder="Enter Email" name="email" required>
+				<label>Password</label>
+				<input type="password" placeholder="Enter Password" name="password" required>
+				<button type="submit" name="login">Login</button>
+			</form>
+		</div>
+		<div class="form-container">
+			<h2>Sign-up</h2>
+			<form method="post" action="signup.php">
+				<label>First Name</label>
+				<input type="text" placeholder="Enter First Name" name="firstname" required>
+				<label>Last Name</label>
+				<input type="text" placeholder="Enter Last Name" name="lastname" required>
+				<label>Email</label>
+				<input type="text" placeholder="Enter Email" name="email" required>
+				<label>Password</label>
+				<input type="password" placeholder="Enter Password" name="password" id="password" required>
+				<label>Confirm Password</label>
+				<input type="password" placeholder="Confirm Password" name="confirm-password" id="confirm-password" required>
+				<button type="submit" name="signup">Sign-up</button>
+			</form>
+		</div>
+	</div>
+    <?php include 'login.php'; ?>
+	<script>
+    // Check if password and confirm password fields match
+function checkPasswordMatch() {
+    var password = document.getElementById("password");
+    var confirmPassword = document.getElementById("confirm-password");
+    var errorMessage = document.getElementById("password-error");
+
+    if (password.value != confirmPassword.value) {
+        confirmPassword.setCustomValidity("Passwords do not match");
+        errorMessage.innerHTML = "Passwords do not match";
+    } else {
+        confirmPassword.setCustomValidity('');
+        errorMessage.innerHTML = "";
+    }
+}
+
+// Add event listener for password and confirm password fields
+document.addEventListener("DOMContentLoaded", function() {
+    var password = document.getElementById("password");
+    var confirmPassword = document.getElementById("confirm-password");
+    password.addEventListener("change", checkPasswordMatch);
+    confirmPassword.addEventListener("keyup", checkPasswordMatch);
+});
+   
+
+    </script>
+</body>
+</html>
+
+
+
+
+

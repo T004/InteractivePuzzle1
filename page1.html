@@ -1,0 +1,53 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>Forest</title>
+        <link rel="stylesheet" type="text/css" href="style1.css"> 
+    </head>
+    <body>
+        <div class="banner">
+           
+            <div class="content1">
+                <h1>You have entered the forest</h1>
+                <p>you see two paths before you</p>
+                <br>
+                <p>Left path is heading towards a cave</p>
+                
+                <p>Right path is heading towards a river</p>
+                <div class="images">
+                <div class="photo">
+                    <img src="cave.jpg" alt="cave" width="100px" height="50px" >
+                </div>
+                 <div class="photo">
+                    <img src="lake.jpg" alt="lake" >
+                </div>
+                    </div>
+                <p>Which path do you take?</p>
+                <i>(Clue:listen to this song  given below in the link to find out what the correct choice is.)</i>
+                <br>
+                <a style="font-size: 15px" href="https://www.youtube.com/watch?v=9bKwRW0l-Qk">Listen to the song</a>
+               
+                
+                <div> 
+                    <button type="button" onclick="deadend()"><span></span>Cave!</button>
+                    <button type="button" onclick="myFunction()"><span></span>Lake!</button>
+                </div>
+               
+                    
+            
+                
+            </div>
+            
+        </div>
+        
+        
+  <script>
+    function myFunction() {
+      window.open("page2.html",'_self');}
+        function deadend() {
+      window.open("deadend.html",'_self');}
+    </script>
+    </body>
+
+
+</html>

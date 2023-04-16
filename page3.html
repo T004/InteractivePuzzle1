@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rock Paper Scissors Game</title>
+    <style>
+  body {
+  background-image: url("forest_keeper.jpg");
+  background-size: cover;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h2 {
+  color: #FFFFFF;
+  text-shadow: 2px 2px #000000;
+  font-size: 24px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+h3 {
+  color: #FFFFFF;
+  text-shadow: 2px 2px #000000;
+  font-size: 36px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+i {
+  color: #FFFFFF;
+  text-shadow: 2px 2px #000000;
+  font-style: italic;
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+}
+
+p {
+  color: #FFFFFF;
+  text-shadow: 2px 2px #000000;
+  font-size: 18px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 2px 2px #000000;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+/* Style for rock, paper, scissors buttons */
+.game-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-btns button {
+  width: 120px;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h2>After obtaining the key, as you venture deeper into the forest,you come across a figure shrouded in greenery, known as the Keeper of the Forest.</h2>
+    <h2>This mysterious being won't let you proceed any further unless you beat him in a game of rock papers scissors</h2>
+	<h3>Rock Paper Scissors Game</h3>
+    <i>If it's a tie, play again.</i>
+	<p>Choose your move:</p>
+        <div class="game-btns">
+	<button onclick="playGame('rock')">Rock</button>
+	<button onclick="playGame('paper')">Paper</button>
+	<button onclick="playGame('scissors')">Scissors</button>
+    </div>
+	<p id="result"></p>
+        </div>
+
+	<script>
+        function playGame(playerMove) {
+	var computerMove = Math.random();
+	if (computerMove < 0.34) {
+		computerMove = "rock";
+	} else if (computerMove <= 0.67) {
+		computerMove = "paper";
+	} else {
+		computerMove = "scissors";
+	}
+	console.log("Computer: " + computerMove);
+
+	var result;
+	if (playerMove == computerMove) {
+		result = "It's a tie!";
+	} else if ((playerMove == "rock" && computerMove == "scissors") ||
+	           (playerMove == "paper" && computerMove == "rock") ||
+	           (playerMove == "scissors" && computerMove == "paper")) {
+		result = "You win!";
+        setInterval(function(){ 
+   window.open("page4.html",'_self');;
+}, 2000); 
+	} else {
+		result = " wins!";
+        setInterval(function(){ 
+   window.open("deadend3.html",'_self');;
+}, 2000); 
+	}
+	console.log("Result: " + result);
+
+	document.getElementById("result").innerHTML = "You played " + playerMove + ", keeper played " + computerMove + ". " + result;
+}
+    </script>
+</body>
+</html>

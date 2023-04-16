@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Typing Game</title>
+       <link rel="stylesheet" type="text/css" href="style_page2.css"> 
+  </head>
+  <body>
+      <div class="banner">
+          <div class="text">
+      <h3>You are at the river and you see a  glowing object in the river. As you move close you realize its the the key to the treasure box! The key has some ancient symbols on it. You notice that there's a waterfall at the end of the river. You have to hurry if you want to take the key before it falls down the waterfall</h3>
+    <h3>Type the words as fast before the timer runs out to obtain the key before it falls</h3>
+              </div>
+    <p id="quote"></p>
+    <input type="text" id="input" />
+    <button id="start">Start Game</button>
+    <p id="result"></p>
+          </div>
+    
+    <script>
+        const quotes = [
+  "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+  "The way to get started is to quit talking and begin doing.",
+  "Your time is limited, don't waste it living someone else's life.",
+  "If life were predictable it would cease to be life, and be without flavor.",
+  "If you look at what you have in life, you'll always have more. If you look at what you don't have in life, you'll never have enough.",
+  "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.",
+  "Life is what happens when you're busy making other plans."
+];
+
+const timeLimit = 45; // Time limit in seconds
+
+let currentQuoteIndex;
+let startTime;
+let timerId;
+
+const quoteElement = document.getElementById("quote");
+const inputElement = document.getElementById("input");
+const startButton = document.getElementById("start");
+const resultElement = document.getElementById("result");
+
+startButton.addEventListener("click", startGame);
+
+function startGame() {
+  // Select a random quote from the array
+  currentQuoteIndex = Math.floor(Math.random() * quotes.length);
+  quoteElement.innerText = quotes[currentQuoteIndex];
+
+  // Reset the input field
+  inputElement.value = "";
+
+  // Remove the start button
+  startButton.style.display = "none";
+
+  // Set up the timer
+  startTime = new Date().getTime();
+  timerId = setInterval(updateTimer, 1000);
+
+  // Add event listener to the input field
+  inputElement.addEventListener("input", checkInput);
+}
+
+function updateTimer() {
+  const currentTime = new Date().getTime();
+  const elapsedTime = (currentTime - startTime) / 1000;
+  const remainingTime = timeLimit - elapsedTime;
+
+  if (remainingTime <= 0) {
+    // Time is up, end the game
+    endGame();
+  } else {
+    // Update the timer display
+    resultElement.innerText = `Time remaining: ${Math.floor(remainingTime)} seconds`;
+  }
+}
+
+function checkInput() {
+  // If the input text matches the quote text, end the game
+  if (inputElement.value === quotes[currentQuoteIndex]) {
+    endGame();
+  }
+}
+
+function endGame() {
+  // Record the end time
+  const endTime = new Date().getTime();
+
+  // Calculate the elapsed time
+  const elapsedTime = (endTime - startTime) / 1000;
+
+  // Display the result
+  if (inputElement.value === quotes[currentQuoteIndex]) {
+    resultElement.innerText = `Congratulations! You finished in ${elapsedTime} seconds.`;
+      setInterval(function(){ 
+   window.open("page3.html",'_self');;
+}, 2000); 
+  } else {
+    resultElement.innerText = `Time's up! `;
+       setInterval(function(){ 
+   window.open("deadend2.html",'_self');;
+}, 2000); 
+  }
+
+  // Stop the timer
+  clearInterval(timerId);
+
+  // Remove the event listener from the input field
+  inputElement.removeEventListener("input", checkInput);
+
+  // Show the start button again
+  startButton.style.display;
+    
+}
+      </script>
+  </body>
+</html>

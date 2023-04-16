@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Riddle</title>
+    <style>
+/* Apply background image */
+body {
+  background-image: url('nest.jpg');
+  background-size: cover;
+}
+
+/* Style the game container */
+#game {
+  margin: 50px auto;
+  max-width: 800px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+/* Style the paragraphs */
+#game p {
+  font-size: 24px;
+  line-height: 1.5;
+  margin: 20px 0;
+  color: #333;
+}
+
+/* Style the options container */
+#options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Style the option buttons */
+#options button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 24px;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Style the option buttons on hover */
+#options button:hover {
+  background-color: #3e8e41;
+}
+
+/* Style the result text */
+#result {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  color: #333;
+}
+    </style>
+  </head>
+  <body>
+    <div id="game">
+  <p>You finally reach a clearing where you find a tree with a message carved on it. The message reads, "To reach the treasure, you must climb to the top of this tree and look for the next clue."</p>
+  <p>You climb to the top of the tree and notice a bird's nest with an egg in it. The egg has a message on it that reads, "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?"</p>
+  <div id="options">
+    <button id="option-a">a) Echo</button>
+    <button id="option-b">b) Lightning</button>
+    <button id="option-c">c) Music</button>
+  </div>
+  <p id="result"></p>
+</div>
+      <script>
+          const options = document.querySelectorAll('#options button');
+const result = document.querySelector('#result');
+
+options.forEach(option => {
+  option.addEventListener('click', () => {
+    if (option.id === 'option-a') {
+      result.textContent = 'Congratulations! You have solved the riddle!';
+        setInterval(function(){ 
+   window.open("page5.html",'_self');;
+}, 2000); 
+    } else {
+      result.textContent = 'Sorry, that is not the correct answer.';
+        setInterval(function(){ 
+   window.open("deadend4.html",'_self');;
+}, 2000); 
+    }
+  });
+});
+      </script>
+  </body>
+</html>
